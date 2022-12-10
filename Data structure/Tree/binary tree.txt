@@ -1,0 +1,411 @@
+A tree whose elements have at most 2 children is called a binary tree. Since each element in a binary tree can have only 2 children, we typically name them the left and right child.
+
+A Binary Tree node contains following parts.
+
+Data
+Pointer to left child
+Pointer to right child
+
+
+C:
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
+{
+int keyVal;
+struct node *leftNode;
+struct node *rightNode;
+};
+struct node *getNode(int value)
+{
+struct node *newNode = malloc(sizeof(struct node));
+newNode->keyVal = value;
+newNode->leftNode = NULL;
+newNode->rightNode = NULL;
+return newNode;
+}
+struct node *insert(struct node *rootNode, int value)
+{
+if(rootNode == NULL)
+return getNode(value);
+if(rootNode->keyVal < value)
+rootNode->rightNode = insert(rootNode->rightNode,value);
+else if(rootNode->keyVal > value)
+rootNode->leftNode = insert(rootNode->leftNode,value);
+return rootNode;
+}
+void insertorder(struct node *rootNode)
+{
+    if(rootNode == NULL)
+    return;
+    else
+    {
+        insertorder(rootNode->leftNode);
+        printf("%d ->",rootNode->keyVal);
+        insertorder(rootNode->rightNode);
+    }
+}
+void inorder(struct node *rootNode)
+{
+    if(rootNode!=NULL)
+    {
+        inorder(rootNode->leftNode);
+        printf("%d->",rootNode->keyVal);
+        inorder(rootNode->rightNode);
+    }
+}
+void preorder(struct node *rootNode)
+{
+    if(rootNode!=NULL)
+    {
+        printf("%d ->",rootNode->keyVal);
+        preorder(rootNode->leftNode);
+        preorder(rootNode->rightNode);
+        
+    }
+}
+
+void postorder(struct node *rootNode)
+{
+    if(rootNode!=NULL)
+    {
+        postorder(rootNode->leftNode);
+        postorder(rootNode->rightNode);
+        printf("%d ->",rootNode->keyVal);
+    }
+}
+ 
+void min(struct node *rootNode)
+{
+    if(rootNode!=NULL)
+    {
+        if(rootNode->leftNode==NULL)
+        {
+            printf("%d ->",rootNode->keyVal);
+        }
+        else
+        {
+            min(rootNode->leftNode);        
+        
+        }   
+    }
+    else
+    {
+        printf("tree is empty");
+    }
+}
+
+void max(struct node *rootNode)
+{
+ if(rootNode!=NULL)
+    {
+        if(rootNode->rightNode==NULL)
+        {
+            printf("%d ->",rootNode->keyVal);
+        }
+        else
+        {
+            min(rootNode->rightNode);        
+        }   
+    }
+    else
+    {
+        printf("tree is empty");
+    }
+}
+
+struct node *search(struct node *rootNode,int value)
+{
+ 
+  if(value>rootNode->keyVal)
+ {
+  search(rootNode->rightNode,value);
+ }
+ else if(value<rootNode->keyVal)
+ {
+  search(rootNode->leftNode,value);
+ }
+ return rootNode;
+}
+
+void del(struct node *rootNode)
+{
+ if(rootNode!=NULL)
+ {
+  del(rootNode->leftNode);
+  del(rootNode->rightNode);
+  free(rootNode);
+ }
+}
+
+int main()
+{
+int ch,val;
+struct node *rootNode = NULL;
+
+rootNode = insert(rootNode,7);
+rootNode = insert(rootNode,4);
+rootNode = insert(rootNode,8);
+rootNode = insert(rootNode,1);
+rootNode = insert(rootNode,5);
+rootNode = insert(rootNode,6);
+rootNode = insert(rootNode,3);
+
+printf("select 1 for inorder\n");
+printf("select 2 for preorder\n");
+printf("select 3 for postorder\n");
+printf("select 4 for search\n");
+printf("select 5 for min-value\n");
+printf("seleect 6 for max-value\n");
+printf("select 8 for delete a tree\n");
+printf("select 7 for exit\n");
+printf("enter ur choice:");
+scanf("%d",&ch);
+
+switch(ch)
+{
+    case 1:
+    inorder(rootNode);
+    break;
+    
+    case 2:
+    preorder(rootNode);
+    break;
+    
+    case 3:
+    postorder(rootNode);
+    break;
+    
+    case 4:
+    
+    printf("enter value to search");
+    scanf("%d", &val);
+    struct node *tmp=search(rootNode,val);
+    if(tmp!=NULL)
+    {
+     printf("%d",tmp->keyVal);
+    }
+    
+    break;
+    
+    case 5:
+    min(rootNode);
+    break;
+    
+    case 6:
+    max(rootNode);
+    break;
+    
+    case 7:
+    del(rootNode);
+    break;
+
+    default :
+    break;
+}
+return 0;
+}
+
+C++:
+
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+class node
+{
+public:
+  int data;
+  node *left, *right;
+};
+
+
+node* push(int data)
+{
+  node *newnode = (node *) malloc (sizeof (node));
+  newnode->data = data;
+  newnode->left = NULL;
+  newnode->right = NULL;
+  return newnode;
+}
+
+void inorder (node * temp)
+{
+  if (temp != NULL)
+    {
+      inorder (temp->left);
+      cout << temp->data << " ";
+      inorder (temp->right);
+    }
+}
+
+void PreOrder( node *temp) {
+  if (temp != NULL) {
+    cout << " " << temp->data;
+    PreOrder(temp->left);
+    PreOrder(temp->right);
+  }
+}
+
+void PostOrder( node *temp) {
+  if (temp != NULL) {
+    PostOrder(temp->left);
+    PostOrder(temp->right);
+    cout << " " << temp->data;
+  }
+}
+void max(node *root)
+{
+ if(root!=NULL)
+    {
+        if(root->right==NULL)
+        {
+            cout<<root->data;
+        }
+        else
+        {
+            max(root->right);        
+        }   
+    }
+    else
+    {
+        cout<<"tree is empty";
+    }
+}
+
+
+int size(node* node)
+{
+    if (node == NULL)
+        return 0;
+    else
+        
+        return(size(node->left) + 1 + size(node->right));
+}
+ 
+unsigned int getLeafCount(struct node* node)
+{
+    if(node == NULL)    
+        return 0;
+    if(node->left == NULL && node->right == NULL)
+        return 1;        
+    else
+        cout<<node->data;
+        return getLeafCount(node->left)+
+            getLeafCount(node->right);
+}
+
+void min(node *root)
+{
+    if(root!=NULL)
+    {
+        if(root->left==NULL)
+        {
+            cout<<root->data;
+        }
+        else
+        {
+            min(root->left);        
+        
+        }   
+    }
+    else
+    {
+        cout<<"tree is empty";
+    }
+}
+
+
+void deleteTree(node* node)
+{
+    if (node == NULL) return;
+
+    /* first delete both subtrees */
+    deleteTree(node->left);
+    deleteTree(node->right);
+
+    /* then delete the node */
+    cout << "Deleting node: " << node->data << endl;
+    delete node;
+}
+node* insert(node* root,int data)
+{
+    if(root==NULL)
+    {
+        push(data);
+    }
+    else
+    {
+        if(data<root->data)
+        {
+            root->left=insert(root->left,data);
+            return root;
+        }
+        else
+        {
+            root->right=insert(root->right,data);
+            return root;
+        }
+    }
+}
+bool isFullBinaryTree(node *root) {
+  
+  // Checking for emptiness
+  if (root == NULL)
+    return true;
+
+  // Checking for the presence of children
+  if (root->left == NULL && root->right == NULL)
+    return true;
+
+  if ((root->left) && (root->right))
+    return (isFullBinaryTree(root->left) && isFullBinaryTree(root->right));
+
+  return false;
+}
+
+int main ()
+{
+  node *root = push (1);
+  
+ 
+//   insert(root,2);
+//   insert(root,3);
+//   insert(root,4);
+//   insert(root,5);
+   root->left = push (2);
+   root->right = push (3);
+  root->left->left = push (4);
+  root->left->right = push (5);
+  
+  int n=size(root);
+  cout<<n<<"\n";
+  cout<<getLeafCount(root);
+  cout<<"\n";   
+  inorder (root);
+  cout<<"\n";
+  PreOrder(root);
+  cout<<"\n";
+  PostOrder(root);
+  cout<<"\n";
+  max(root);
+  cout<<"\n";
+  min(root);
+  cout<<"\n";
+  if (isFullBinaryTree(root))
+    cout << "The tree is a full binary tree\n";
+  else
+    cout << "The tree is not a full binary tree\n";
+  deleteTree(root);
+}
+

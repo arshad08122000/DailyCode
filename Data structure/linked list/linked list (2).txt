@@ -1,0 +1,256 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+class node
+{
+public:
+    int data;
+    node* next;
+};
+
+
+node* head=NULL;
+
+node* push(node* head,int data)
+{
+    node* newn=new node();
+
+    newn->data=data;
+    newn->next=head;
+    head=newn;
+    return head;
+}
+void partdell(node** head,int data)
+{
+    node* temp=*head;
+    node* prev=NULL;
+
+
+    if(temp->next!=NULL&&temp->data==data)
+    {
+        temp->next=*head;
+        delete temp;
+        return ;
+    }
+
+    else
+    {
+        while(temp->next!=NULL&&temp->data!=data)
+        {
+            prev=temp;
+            temp=temp->next;
+            
+        }
+
+        if(temp==NULL){
+            return ; 
+        }
+        else
+        {
+            prev->next=temp->next;
+            delete temp;
+        }
+    }
+}
+
+void begdelete(node** head)
+{
+    node* temp=*head;
+    *head=temp->next;
+    delete temp;
+    
+
+}
+void deleteList(node** head)
+{
+  
+    /* deref head_ref to get the real head */
+    node* current = *head;
+    node* next = NULL;
+  
+    while (current != NULL) 
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+  
+    /* deref head_ref to affect the real head back
+        in the caller. */
+    *head = NULL;
+}
+
+
+void last_delete()  
+{  
+    node *ptr,*ptr1;  
+    ptr = head;
+    if(head == NULL)  
+    {  
+        cout<<"\nlist is empty";  
+    }  
+   
+    else if(ptr -> next == NULL)  
+    {  
+        head = NULL;  
+        free(head);  
+        cout<<"\nOnly node of the list deleted ...\n";  
+    }  
+          
+    else  
+    {  
+        ptr = head;   
+        while(ptr->next != NULL)  
+        {  
+            ptr1 = ptr;  
+            ptr = ptr ->next;  
+        }  
+        ptr1->next = NULL;  
+        free(ptr);  
+        cout<<"\nDeleted Node from the last ...\n";  
+    }     
+}  
+
+
+
+void printt(node* hea) 
+{
+    while(hea!=NULL)
+    {
+        cout<<hea->data<<" ";
+        hea=hea->next;
+    }
+}
+void lastpush(int data)
+ {
+     node* temp=head;
+
+     while(temp->next!=NULL){
+         temp=temp->next;
+
+     }
+     node* ptr=new node();
+    temp->next=ptr;
+    ptr->data=data;
+    ptr->next=NULL;
+ }
+
+
+void rinsert(int data,int pos)
+{
+    node* temp=head;
+    for(int i=0;i<pos;i++){
+        temp=temp->next;
+    }
+    node* ptr=new node();
+    ptr->data=data;
+    ptr->next=temp->next;
+    temp->next=ptr;
+
+    
+}
+void search(int item)  
+{  
+    node *ptr=head;
+    int i=0,flag;  
+     
+    if(ptr == NULL)  
+    {  
+        cout<<"not found";  
+    }  
+    else  
+    {   
+        while (ptr!=NULL)  
+        {  
+            if(ptr->data == item)  
+            {  
+                cout<<"item found at "<<i+1;
+                flag=0;  
+            }   
+            else  
+            {  
+                flag=1;  
+            }  
+            i++;  
+            ptr = ptr -> next;  
+        }  
+        
+    }     
+          
+}  
+
+
+int main()
+{
+     
+    // Start with the empty list
+    
+    
+
+    head=push(head,1);
+    head=push(head,2);
+    head=push(head,3);
+    head=push(head,4);
+    
+
+    printt(head);
+    lastpush(5);
+    rinsert(6,3);
+    partdell(&head,1);
+    search(3);
+    begdelete(&head);
+    last_delete();
+    // random_delete(&head);
+    // deletelist(&head);
+    printt(head);
+}
+
+python:
+
+
+
+class node:
+ def __init__(self,data):
+  self.data=data
+  self.next=None
+
+
+class linkedlist:
+ def __init__(self):
+  self.head=None
+
+ def push(self,x):
+  newnode=node(x)
+  newnode.next=self.head
+  self.head=newnode
+  
+ def printt(self):
+  temp=self.head
+  while temp:
+   print(temp.data,end=" ")
+   temp=temp.next
+
+
+ def delt(self,num):
+  temp=self.head
+  if temp.data==num:
+   self.head=temp.next
+   temp=None
+   
+  else:
+   while temp.data!=num:
+     temp=temp.next
+   self.head=temp.next
+   temp=None
+  
+
+
+
+lis=linkedlist()
+lis.push(1)
+lis.push(2)
+lis.push(3)
+lis.delt(3)
+lis.printt()
+
+

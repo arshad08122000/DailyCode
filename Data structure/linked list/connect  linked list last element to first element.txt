@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+
+class node{
+    public:
+    string data;
+    node* next;
+};
+
+
+void push(node** head,string data)
+{
+    
+    node* newn=new node();
+    if(head==NULL)
+    {
+        newn->data=data;
+        newn->next=NULL;
+        *head=newn;
+        
+    }
+    else
+    {
+        newn->data=data;
+        newn->next=*head;
+        *head=newn;
+        
+    }
+   
+    
+}
+
+
+void printt(node* head) 
+{
+    while(head!=NULL)
+    {
+        cout<<head->data<<" ";
+        head=head->next;
+    }
+}
+
+void fin(node** head,string da)
+{
+    node* temp;
+    temp=*head;
+    node* ss;
+    ss=*head;
+    while(temp->data!=da)
+    {
+        temp=temp->next;
+    }
+    temp->next=ss;
+    
+
+}
+
+
+int main()
+{
+     
+    // Start with the empty list
+    string arr[5]={"sdf","Sdf","SDF","DC","Df"};
+    node* head=NULL;
+    
+    
+
+
+    for(int i=0;i<5;i++)
+    {
+        
+        push(&head,arr[i]);  
+    }
+    fin(&head,arr[0]);
+
+    printt(head);
+    
+    
+}

@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr1[]={1,3,5,7};
+    int arr2[]={2,3,5,8};
+    int n=10;
+    int i=0;
+    int j=4-1;
+    int count=0;
+    
+    
+    while(i<4 && j>=0)
+    {
+        if(arr1[i]+arr2[j]==n)
+        {
+         count++;
+         i++;
+         j--;
+        }
+        else if(arr1[i]+arr2[j]<n)
+        {
+            i++;
+        }
+        else
+        {
+            j--;
+        }
+    }
+    
+    printf("%d",count);
+    
+}

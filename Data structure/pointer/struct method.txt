@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include<string.h>
+
+struct ars
+{
+  int a;
+  char r[100];
+
+};
+
+int main ()
+{
+  struct ars had;
+  had.a = 23;
+  strcpy (had.r, "sdfds");
+  printf ("%d", had.a);
+  printf("\n%s",had.r);
+}

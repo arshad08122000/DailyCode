@@ -1,0 +1,102 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+  
+
+// Driver Code
+
+class node
+{
+    public:
+    int data;
+    node* next;
+    node* prev;
+    
+};
+
+
+
+
+int main()
+{
+    node* head=NULL;
+    node* a=new node();
+    node* b=new node();
+    node* c=new node();
+    node* d=new node();
+    node* e=new node();
+
+    node* f=new node();
+    node* g=new node();
+    node* h=new node();
+    node* i=new node();
+
+    a->data=1;
+    a->next=b;
+    a->prev=NULL;
+    head=a;
+
+    b->prev=a;
+    b->data=2;
+    b->next=c;
+
+    c->prev=b;
+    c->data=3;
+    c->next=d;
+
+    d->prev=c;
+    d->data=4;
+    d->next=e;
+
+    e->prev=d;
+    e->data=5;
+    e->next=NULL;
+
+    f->prev=NULL;
+    f->data=7;
+    f->next=g;
+
+    node* dead;
+    dead=f;
+
+    g->prev=f;
+    g->data=8;
+    g->next=h;
+
+    h->prev=g;
+    h->data=9;
+    h->next=i;
+
+    i->prev=h;
+    i->data=10;
+    i->next=NULL;
+    
+    while(dead!=NULL){
+        cout<<dead->data;
+        dead=dead->next;
+    }
+    cout<<endl;
+
+
+
+    cout<<head->data;
+    
+    while(head->next!=NULL)
+    {
+        cout<<head->data;
+        head=head->next;
+
+    }
+
+
+
+    
+
+
+}
+    
+
+  
+    
+  
+   

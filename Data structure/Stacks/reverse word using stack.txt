@@ -1,0 +1,123 @@
+#include <stdio.h>  
+#include <string.h>  
+  
+#define max 100  
+int top,stack[max];  
+  
+void push(char x){  
+  
+      // Push(Inserting Element in stack) operation  
+      if(top == max-1){  
+          printf("stack overflow");  
+      }  else {  
+          stack[++top]=x;  
+      }  
+  
+}  
+  
+void pop(){  
+    // Pop (Removing element from stack)  
+      printf("%c",stack[top--]);  
+}  
+  
+  
+main()  
+{  
+   char str[]="sri.lanka.df";  
+   int len = strlen(str);  
+   int i;  
+  
+   for(i=0;i<len;i++)  
+   {
+    if(str[i]!='.')
+    {
+     push(str[i]);
+    }
+   }
+          
+  
+   for(i=0;i<len;i++)  
+      pop();  
+} 
+
+2)
+
+#include<iostream>
+#include<stack>
+#include<string.h>
+
+using namespace std;	
+
+
+void rev(string s)
+{
+    stack<string> st;
+    for(int i=0;i<s.length();i++){
+        string word="";
+        while(s[i]!='.' && i<s.length())
+        {
+            word+=s[i];
+            i++;
+        }
+        st.push(word);
+
+    }
+
+    while(!st.empty())
+    {
+        cout<<st.top()<<" ";
+        st.pop();
+        
+    }
+}
+
+int main()
+{
+    string s="hey.how.are.u";
+    rev(s);
+}
+
+3)
+
+
+
+#include<iostream>
+#include<stack>
+#include<string.h>
+
+using namespace std;	
+
+
+void rev(string s)
+{
+    string word="";
+    stack<string> st;
+    int len=s.size();
+    int i=0;
+    for(i=0;i<len;i++){
+      if((s[i]=='.'))
+      {
+        st.push(word);
+        word="";
+      }
+      else if(isalpha(s[i]))
+      {
+        word+=s[i];
+      }
+      
+    }
+    st.push(word);
+
+    while(!st.empty())
+    {
+        cout<<st.top()<<" ";
+        st.pop();
+        
+    }
+}
+
+int main()
+{
+    string s="hey.how.are.u";
+    rev(s);
+}

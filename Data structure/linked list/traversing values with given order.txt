@@ -1,0 +1,84 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class node
+{
+  public:
+  int data;
+  node* next;
+};
+
+
+
+void push(node** head,int x)
+{
+  node* newnode=new node();
+  newnode->data=x;
+  newnode->next=*head;
+  *head=newnode;
+}
+
+
+void print(node* eemp)
+{
+  while(eemp!=NULL){
+    
+    cout<<eemp->data<<"-";
+    eemp=eemp->next;
+  }
+  cout<<endl;
+}
+
+
+void sum(node** head)
+{
+  int i=1;
+  int n=1;
+  int bum=1;
+  node* temp=*head;
+  
+
+  while(temp!=NULL)
+  {
+    if(i==n)
+    {  
+      node* dummy=temp;
+      
+      for(int j=0;j<bum;j++)
+      {
+        
+        dummy=dummy->next;
+      }
+      
+      temp->next=dummy->next;
+    
+      temp=temp->next;
+      i=1;
+    }
+    else
+    {
+      
+      temp=temp->next;
+      i++;
+    }
+    
+  }
+}
+
+int main()
+{
+ node* head=NULL;
+ int num=0;
+ for(int i=0;i<10;i++)
+ {
+   cin>>num;
+   push(&head,num);
+ }
+ 
+ sum(&head);
+ 
+ print(head);
+}
+
+
+//output-1-3-5-7-9-

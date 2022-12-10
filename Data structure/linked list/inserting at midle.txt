@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+
+class node{
+    public:
+    int data;
+    node* next;
+};
+
+
+
+
+void printt(node* head) 
+{
+    while(head!=NULL)
+    {
+        cout<<head->data<<" ";
+        head=head->next;
+    }
+}
+
+
+
+int main()
+{
+     
+    // Start with the empty list
+    
+    node* head=NULL;
+    
+    node* a=new node();
+    node* b=new node();
+    node* c=new node();
+
+    a->data=1;
+    a->next=b;
+    head=a;
+    b->data=5;
+    b->next=NULL;
+    c->data=6;
+    c->next=a->next;
+    a->next=c;
+
+    printt(head);
+    
+    
+}

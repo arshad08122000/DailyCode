@@ -1,0 +1,4 @@
+The expression tree is a tree used to represent the various expressions. The tree data structure is used to represent the expressional statements. In this tree, the internal node always denotes the operators.
+
+The leaf nodes always denote the operands.
+The operations are always performed on these operands.

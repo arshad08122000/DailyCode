@@ -1,0 +1,32 @@
+ vector<int> v;
+    void inorder(Node *root)
+    {
+        
+        if(root==NULL)
+        {
+            return;
+        }
+        
+        inorder(root->left);
+        v.push_back(root->data);
+        inorder(root->right);
+    }
+    
+    void postorder(Node *root)
+    {
+        if(root==NULL)
+        {
+            return;
+        }
+        postorder(root->left);
+        postorder(root->right);
+        root->data=v.back();
+        v.pop_back();
+    }
+  
+    void convertToMaxHeapUtil(Node *root)
+    {
+      inorder(root);
+      reverse(v.begin(),v.end());
+      postorder(root);
+    }    

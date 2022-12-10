@@ -1,0 +1,56 @@
+#include <bits/stdc++.h> 
+  
+using namespace std;  
+  
+int main() 
+{    
+  vector<vector<int>> vect{{1,2,3},{4,5,6},{7,8,9}};
+  int rl=0; 
+  int ru=vect.size()-1;
+
+  int cl=0;
+  int cu=vect[0].size()-1;
+
+  int n=vect.size();
+  int m=vect[0].size();
+  for(int i=0;i<n;i++)
+  {
+      for(int j=0;j<m;j++)
+      {
+      cout<<vect[i][j];
+      }
+      cout<<"\n";
+  }   
+
+  while((rl<=ru) && (cl<=cu))
+  {
+    
+      for(int i=cl;i<=cu;i++){
+          
+          cout<<vect[rl][i];
+      }
+      rl++;
+      for(int i=rl;i<=ru;i++)
+      {
+          
+          cout<<vect[i][cu];
+          
+      }
+      cu--;
+      for(int j=cu;j>=cl;j--){
+          
+          cout<<vect[ru][j];
+          
+      }
+      ru--;
+      
+      for(int j=ru;j>=rl;j--)
+      {
+          cout<<vect[j][cl];
+       
+      }
+      cl++;
+     
+  }
+  return 0;  
+}  

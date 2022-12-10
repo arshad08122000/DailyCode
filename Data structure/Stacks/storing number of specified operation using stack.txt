@@ -1,0 +1,74 @@
+#include<stdio.h>
+#define max 100
+int top,stack[max];
+void push(int arrr)
+{
+    if(top == max-1){  
+          printf("stack overflow");  
+      }  else {  
+          stack[top++]=arrr;  
+      }  
+}
+
+
+
+int main()
+{
+    int arr[]={2,5,15,23,25};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    int count=0;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]%5==0)
+        {
+            push(arr[i]);
+            count++;
+            
+        }
+        
+        
+    }
+    for(int i=0;i<count;i++)
+    {
+       pop();
+    }
+   
+}
+
+void pop()
+{
+    printf("%d \n",stack[--top]);
+}
+
+
+C++
+
+
+#include <iostream>    
+#include <stack>
+#include <cstdlib>
+using namespace std;
+int main() {
+	stack<int> st1;
+	stack<int> st2;
+
+	st1.emplace(12);
+	st1.emplace(19);
+
+	st2.emplace(20);
+	st2.emplace(23);
+
+	st1.swap(st2);
+
+	cout << "st1 = ";
+	while (!st1.empty()) {
+		cout << st1.top() << " ";
+		st1.pop();
+	}
+
+	cout << endl << "st2 = ";
+	while (!st2.empty()) {
+		cout << st2.top() << " ";
+		st2.pop();
+	}
+}

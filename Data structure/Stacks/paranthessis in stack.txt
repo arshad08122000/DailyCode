@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    stack<int> arr;
+    string brr="((()())";
+    int re=0;
+    for(int i=0;i<brr.size();i++)
+    {
+        if(brr[i]=='(')
+        {
+            arr.push(i);
+        }
+        else
+        {
+            arr.pop();
+            
+            if(arr.empty())
+            {
+                arr.push(i);
+            }
+            else
+            {
+                re=max(re,i-arr.top());
+            }
+        }
+    }
+    cout<<re;
+}
+
+//output-6

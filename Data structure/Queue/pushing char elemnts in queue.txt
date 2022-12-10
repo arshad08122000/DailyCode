@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include<string.h>
+ 
+#define MAX 50
+ 
+
+int queue_array[MAX];
+int rear=-1,front=-1;
+int main()
+{
+    
+    
+    int n;
+    char str[100];
+    gets(str);
+    
+    int count=0;
+    n=strlen(str);
+    
+    
+    
+    for(int i=0;i<n;i++)
+    {
+        if(str[i]=='a')
+        {
+            queue_array[++rear]=str[i];
+            count++;
+        }
+    }
+    for(int i=0;i<count;i++)
+    {
+        printf("%c",queue_array[i]);
+    }
+    
+}
+    
+    
+ 
+
+ 

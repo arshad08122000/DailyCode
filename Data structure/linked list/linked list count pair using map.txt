@@ -1,0 +1,90 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+
+class node{
+    public:
+    int data;
+    node* next;
+};
+
+
+void push(node** head,int data)
+{
+    node* newn=new node();
+    node* temp=*head;
+    if(head==NULL)
+    {
+        newn->data=data;
+        newn->next=NULL;
+        *head=newn;
+    }
+    else
+    {
+        newn->data=data;
+        newn->next=*head;
+        *head=newn;
+           
+    }
+    
+    
+}
+
+
+void printt(node* head,node* dead) 
+{
+    
+    node*a=new node();
+    node*b=new node();
+    a->data=6;
+    a->next=b;
+    dead=a;
+    
+    b->data=4;
+    b->next=NULL;
+    int sum=8;
+    int count=0;
+    unordered_map <int,int> map;
+    while(head!=NULL)
+    {
+        
+        map[sum-head->data]=1;
+        cout<<head->data<<" ";
+        head=head->next;
+    }
+    while(dead!=NULL)
+    {
+        if(map[dead->data]==1)
+        {
+            count++;
+        }
+        dead=dead->next;
+    }
+    cout<<count;
+}
+
+
+
+int main()
+{
+     
+    // Start with the empty list
+    
+    node* head=NULL;
+    node* dead=NULL;
+    
+    
+    
+    int arr[3];
+
+
+    for(int i=0;i<3;i++)
+    {
+        cin>>arr[i]; 
+        push(&head,arr[i]);  
+    }
+
+    printt(head,dead);
+    
+    
+}

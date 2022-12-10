@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+ vector <vector<int>> arshad {{1,2,3},{4,5,6},{7,8,9}};
+ int n=arshad.size();
+ int m=arshad[0].size();
+ int arhad[2][2]={{1,2},{3,4}};
+ int nn=sizeof(arhad)/sizeof(arhad[0]);
+ int mm=sizeof(arhad[0])/sizeof(int);
+ cout<<n<<m<<nn<<mm;
+}

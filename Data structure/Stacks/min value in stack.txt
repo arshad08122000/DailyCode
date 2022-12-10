@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+stack<int> st;
+stack<int> dum;
+
+void push(int x)
+{
+  if(st.size()==0)
+  {
+    st.push(x);
+    dum.push(x);
+  }
+  else
+  {
+    if(x<=dum.top())
+    {
+      dum.push(x);
+    }
+    st.push(x);
+  }
+
+}
+
+int pop()
+{
+  if(st.top()==dum.top())
+  {
+    
+    dum.top();
+
+  }
+  int temp=st.top();
+  st.pop();
+  return temp;
+  
+}
+
+int getmin()
+{
+  return dum.top();
+}
+
+int main()
+{
+  
+  int x=2,y=3,z=1;
+  push(x);
+  push(y);
+  cout<<pop();
+  cout<<getmin();
+  push(z);
+  cout<<getmin();
+  
+}

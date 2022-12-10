@@ -1,0 +1,175 @@
+#include <iostream>
+
+
+#include <bits/stdc++.h>
+
+
+using namespace std;
+#define r 2
+#define c 2
+
+int main()
+{
+    int arr[2][2]={{1,0},{0,0}};
+    
+   
+    
+    printf("size of matrix row and column is %d %d\n",r,c);
+    
+    int rows[r]={0};
+    int cols[c]={0};
+    
+    int i,j;
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            if(arr[i][j]==1)
+            {
+                rows[i]=1;
+                cols[i]=1;
+            }
+        }
+    }
+    
+    for(i=0;i<r;i++)
+    {
+        if(rows[i]==1)
+        {
+           for(j=0;j<c;j++)
+           {
+               arr[i][j]=1;
+           }
+        }
+    }
+    
+    for(j=0;j<c;j++)
+    {
+        if(cols[j]==1)
+        {
+           for(i=0;i<r;i++)
+           {
+               arr[i][j]=1;
+           } 
+        }
+    }
+    
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            printf("%d",arr[i][j]);
+        }
+    }
+    
+    
+    
+    return 0;
+}
+
+
+
+java:
+
+public class Task {
+ public static void main(String args[])
+ { 
+   
+    int arr[][]={{1,0},{0,0}};
+    int r=arr.length;
+    int c=arr[0].length;
+    int[] rows=new int[r];
+    int[] cols=new int[c];
+    
+    int i,j;
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            if(arr[i][j]==1)
+            {
+                rows[i]=1;
+                cols[i]=1;
+            }
+        }
+    }
+    
+    for(i=0;i<r;i++)
+    {
+        if(rows[i]==1)
+        {
+           for(j=0;j<c;j++)
+           {
+               arr[i][j]=1;
+           }
+        }
+    }
+    
+    for(j=0;j<c;j++)
+    {
+        if(cols[j]==1)
+        {
+           for(i=0;i<r;i++)
+           {
+               arr[i][j]=1;
+           } 
+        }
+    }
+    
+    for(i=0;i<r;i++)
+    {
+        for(j=0;j<c;j++)
+        {
+            System.out.print(arr[i][j]);
+        }
+        System.out.println("");
+    }
+   
+  
+ }
+}
+
+
+
+
+python:
+
+arr=[[1,0],[0,0]]
+r=len(arr)
+c=len(arr[0])
+rows=[0]*r
+cols=[0]*c
+    
+for i in range(len(arr)):
+ for j in range(len(arr)):
+  if arr[i][j]==1:              
+   rows[i]=1
+   cols[i]=1
+        
+        
+    
+for i in range(len(arr)):
+    
+        if rows[i]==1:
+        
+           for j in range(len(arr)):
+           
+               arr[i][j]=1
+           
+        
+    
+    
+for j in range(len(arr)):
+ if cols[j]==1:
+  for i in range(len(arr)):
+   arr[i][j]=1
+            
+    
+for i in arr:
+ for j in i:
+  print(j,end=" ")
+ print()    
+   
+  
+ 
+

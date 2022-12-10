@@ -1,0 +1,1 @@
+Binary Search Tree is a node-based binary tree data structure

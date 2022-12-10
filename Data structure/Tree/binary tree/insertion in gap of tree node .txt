@@ -1,0 +1,100 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+   class node{
+       public:
+       int data;
+       node* left;
+       node* right;
+   };
+
+   node* createnode(int data)
+   {
+       node* newnode=new node();
+       newnode->data=data;
+       newnode->left=NULL;
+       newnode->right=NULL;
+       return newnode;
+   }
+
+
+    node* root=NULL;
+
+
+
+  void printt(node* temp)
+  {
+      if(temp==NULL)
+      {
+          return;
+      }
+      cout << temp->data;
+      printt(temp->left);
+      printt(temp->right);
+  }
+
+
+//inserting new node in b.tree
+   node* insert(node* temp,int data)
+   {
+       queue<node*> q;
+       if(temp==NULL)
+       {
+           temp=createnode(data);
+           return temp;
+       }
+       q.push(temp);
+        while(!q.empty()){
+            node* dummy=q.front();
+            q.pop();
+            if(dummy->left!=NULL)
+            {
+                q.push(dummy->left);
+            }
+            else
+            {
+                dummy->left= createnode(data);
+                return root;
+            }
+            if(dummy->right!=NULL)
+            {
+                q.push(dummy->right);
+            }
+            else
+            {
+                dummy->right= createnode(data);
+                return root;
+
+            }
+
+        }
+
+   }
+
+
+   int main(){
+       root=createnode(5);
+       root->left = createnode(3);
+       root->left->left = createnode(2);
+       root->left->right = createnode(4);
+
+       root->right = createnode(6);
+       root->right->right = createnode(7);
+        root=insert(root,11);
+       printt(root);
+   }
+
+
+
+//output-
+//
+//tree structure
+        //       5
+        //     3   6  
+        //    2 4    7
+//after inserting data in empty field
+        //       5
+        //     3   6  
+        //    2 4 11 7

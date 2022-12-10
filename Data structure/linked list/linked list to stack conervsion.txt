@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class node
+{
+    public:
+    int data;
+    node* next;
+};
+
+
+void insert(node** head,int data)
+{
+    
+    node* newnode=new node();
+    newnode->data=data;
+    newnode->next=*head;
+    *head=newnode;
+    
+    
+}
+
+void printl(node* head)
+{
+    stack<int> a;
+    node* temp=head;
+    while(temp!=NULL)
+    {
+        a.push(temp->data);
+        cout<<temp->data;
+        temp=temp->next;
+    }
+    while(!a.empty())
+    {
+        int d=a.top();
+        cout<<d;
+        a.pop();
+    }
+}
+
+int main()
+{
+    node* head=NULL;
+    insert(&head,1);
+    insert(&head,2);
+    insert(&head,3);
+    
+
+    printl(head);
+
+
+    
+
+}

@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include<stdlib.h>  
+
+struct node
+{
+    
+    int data;
+    struct node* next;
+    
+};
+
+
+    
+int main()
+{
+    struct node* head= (struct node*)malloc(sizeof(struct node));
+    struct node* second=(struct node*)malloc(sizeof(struct node));
+    struct node* third= (struct node*)malloc(sizeof(struct node));
+     struct node* temp= (struct node*)malloc(sizeof(struct node));
+   
+
+
+    head->data=3;
+    head->next=second;
+
+    second->data=4;
+    second->next=third;
+
+    third->data=5;
+    third->next=NULL;
+    
+    temp=head;
+    
+    
+     while(temp!=NULL)
+    {
+        printf("%d",temp->data);
+        temp=temp->next;
+    }
+    
+}
+
+

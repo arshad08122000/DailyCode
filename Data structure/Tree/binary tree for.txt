@@ -1,0 +1,87 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+/* A binary tree node has data, pointer to left child
+and a pointer to right child */
+class node
+{
+    public:
+    int data;
+    node* left;
+    node* right;
+    node(int x)
+    {
+        data=x;
+        left=NULL;
+        right=NULL;
+    }
+};
+ 
+/* Helper function that allocates a new node with the
+given data and NULL left and right pointers. */
+
+ 
+/* Computes the number of nodes in a tree. */
+int size(node* node)
+{
+    if (node == NULL)
+        return 0;
+    else
+        return(size(node->left) + 1 + size(node->right));
+}
+
+
+void printt(node* sd)
+{
+    if(sd!=NULL)
+    {
+        cout<<sd->data;
+        printt(sd->left);
+        printt(sd->right);
+    }
+}
+node* insert(node* root,int n)
+{
+    
+        if(root==NULL)
+        {
+            return new node(n); 
+           
+        }
+        if(n>root->data)
+        {
+           
+            root->right=insert(root->right,n);
+        
+        }
+        else
+        {
+            root->left=insert(root->left,n);
+        }
+        return root;
+        
+}
+
+/* Driver code*/
+int main()
+{
+    node* root=NULL;
+    node* temp;
+    
+    for(int i=0;i<5;i++)
+    {
+        int n;
+        cin>>n;
+        
+        root=insert(root,n);
+    }
+    
+    insert(root,7);
+
+    
+    cout << "Size of the tree is " << size(root);
+    printt(root);
+}
+    
+ 
+// This code is contributed by rathbhupendr

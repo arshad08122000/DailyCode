@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+
+class node{
+    public:
+    int data;
+    node* next;
+    node (int x)
+    {
+        data=x;
+        next=NULL;
+
+    }
+};
+
+
+
+void printt(node* head) 
+{
+    while(head!=NULL)
+    {
+        cout<<head->data<<" ";
+        head=head->next;
+    }
+}
+
+
+
+int main()
+{
+    
+    int arr[5];
+    node* head=NULL;
+    node* temp;
+    
+    for(int i=0;i<5;i++)
+    {
+        cin>>arr[i]; 
+        if(head==NULL)
+        {
+            head=new node(arr[i]);
+            temp=head;
+            
+            
+        }
+        else
+        {   
+            temp->next=new node(arr[i]);
+            temp=temp->next;
+           
+        }
+        
+    }
+    printt(head);
+}
